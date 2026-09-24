@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/denue",
   "title": "Denue",
   "description": "INEGI DENUE MCP — Mexico's directory of economic units (~6M businesses).",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://pipeworx.io/packs/denue",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-denue",
