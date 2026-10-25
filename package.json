@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-denue",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "INEGI DENUE MCP — Mexico's directory of economic units (~6M businesses).",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-27253ea36473b785be18a411f09c581988eb611367156d9d09211c30b83cf13c",
-    "sourceCommit": "5749f83c0ea115fab4c0c0ef04b66b05f2507d67"
+    "sourceHash": "v1-d618556cb145cd9956a7d68fa671f7a22827fea8966118e7c80223d666ac725f",
+    "sourceCommit": "29fb434ca65fe0f61191f19c3502f583f5fb99d7"
   }
 }
