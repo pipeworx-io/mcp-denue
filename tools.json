@@ -1,0 +1,130 @@
+[
+  {
+    "name": "denue_search_nearby",
+    "description": "Find businesses near a coordinate. Returns establishments matching the keyword within the given radius (max 5000m).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "type": "string",
+          "description": "Search keyword — business name, brand, or activity (e.g., \"oxxo\", \"cafe\", \"farmacia\"). Use \"todos\" for all establishments in radius."
+        },
+        "lat": {
+          "type": "number",
+          "description": "Latitude (decimal degrees)"
+        },
+        "lng": {
+          "type": "number",
+          "description": "Longitude (decimal degrees)"
+        },
+        "radius_m": {
+          "type": "number",
+          "description": "Search radius in meters (1-5000, default 500)"
+        }
+      },
+      "required": [
+        "condition",
+        "lat",
+        "lng"
+      ]
+    }
+  },
+  {
+    "name": "denue_search_by_name",
+    "description": "Search businesses by name or brand across Mexico or a single state. Paginated — set page_size and page_start to walk results.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Business name or brand (e.g., \"walmart\", \"cemex\")"
+        },
+        "state_code": {
+          "type": "string",
+          "description": "Two-digit state code \"01\"-\"32\", or \"00\" for all Mexico. Default \"00\"."
+        },
+        "page_start": {
+          "type": "number",
+          "description": "First record (1-based, default 1)"
+        },
+        "page_end": {
+          "type": "number",
+          "description": "Last record (default page_start + 24, max ~1000 per request)"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "denue_search_in_state",
+    "description": "Search businesses in a single Mexican state by keyword — matches against name, activity, or address. Use this for state-scoped queries that need more than just business name (e.g., \"panaderia\", \"ferreteria\"). Returns paginated results.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string",
+          "description": "Search term — matches name, economic activity description, or address text."
+        },
+        "state_code": {
+          "type": "string",
+          "description": "Two-digit state code \"01\"-\"32\" (required — use denue_search_by_name with \"00\" for nationwide)."
+        },
+        "page_start": {
+          "type": "number",
+          "description": "First record (1-based, default 1)"
+        },
+        "page_end": {
+          "type": "number",
+          "description": "Last record (default page_start + 24)"
+        }
+      },
+      "required": [
+        "keyword",
+        "state_code"
+      ]
+    }
+  },
+  {
+    "name": "denue_establishment",
+    "description": "Get full details for a single establishment by DENUE ID (the \"Id\" field from search results).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Establishment Id (numeric string, e.g., \"9988845\")"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  },
+  {
+    "name": "denue_count",
+    "description": "Count establishments by economic activity + geography + size stratum. Returns totals — no detail records. Use for market-sizing questions like \"how many pharmacies are in Jalisco\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "activity_code": {
+          "type": "string",
+          "description": "SCIAN economic activity code(s), comma-separated. 2-6 digits (sector → branch → class). Use \"0\" for any activity. Examples: \"46\" (retail), \"722\" (food services), \"464111\" (pharmacies)."
+        },
+        "area_code": {
+          "type": "string",
+          "description": "Geography code(s), comma-separated. \"00\" = all Mexico; 2 digits = state; 5 digits = municipality (state+mun). Examples: \"09\" (CDMX), \"14039\" (Guadalajara)."
+        },
+        "stratum": {
+          "type": "string",
+          "description": "Employee-size stratum: 0=any, 1=0-5, 2=6-10, 3=11-30, 4=31-50, 5=51-100, 6=101-250, 7=251+. Default \"0\"."
+        }
+      },
+      "required": [
+        "activity_code",
+        "area_code"
+      ]
+    }
+  }
+]

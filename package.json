@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-denue",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "INEGI DENUE MCP — Mexico's directory of economic units (~6M businesses).",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-denue": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "denue"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-denue.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/denue",
   "pipeworx": {
-    "sourceHash": "v1-d618556cb145cd9956a7d68fa671f7a22827fea8966118e7c80223d666ac725f",
-    "sourceCommit": "29fb434ca65fe0f61191f19c3502f583f5fb99d7"
+    "mode": "gateway",
+    "slug": "denue",
+    "gatewaySlug": "denue",
+    "sourceHash": "v1-8b3b47acaf718d58bdcb6b119ef7782b37b74c15eb2b39d1cbfac9ae5e092ce5",
+    "sourceCommit": "0b3faaa4d85299a961dd86dea75a0f0e1dad280c"
   }
 }
